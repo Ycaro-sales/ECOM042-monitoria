@@ -1,0 +1,15 @@
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+        aliases {
+                sw0 = &button0;
+        };
+        buttons {
+                compatible = "gpio-keys";
+                btn: button0 {
+                        label = "SW0";
+                        gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+                };
+        }
+        
+}

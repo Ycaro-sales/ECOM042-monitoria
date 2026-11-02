@@ -6,3 +6,8 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(hello_world)
 
 target_sources(app PRIVATE src/main.c src/sensor.c)
+
+# Simulação do botão pelo teclado: só existe no native_sim.
+if(CONFIG_BOARD_NATIVE_SIM)
+  target_sources(app PRIVATE src/button_sim.c)
+endif()
