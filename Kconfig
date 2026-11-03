@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+
+source "Kconfig.zephyr"
+
+config APP_CMD_LINE_SIZE
+	int "Tamanho do buffer de linha da mini-shell (inclui o NUL)"
+	default 64
+	range 2 1024
+	help
+	  Linhas com mais de APP_CMD_LINE_SIZE - 1 caracteres são descartadas
+	  por inteiro e respondidas com "ERR: line too long".

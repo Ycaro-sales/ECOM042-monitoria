@@ -1,0 +1,22 @@
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+	aliases {
+		sw0 = &button0;
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+
+		button0: button_0 {
+			gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+			label = "User button";
+			zephyr,code = <INPUT_KEY_0>;
+		};
+	};
+};
+
+/* Canal de comandos da mini-shell (pseudo-terminal próprio). */
+&uart1 {
+	status = "okay";
+};

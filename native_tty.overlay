@@ -1,0 +1,14 @@
+/*
+ * Troca a uart1 do native_sim para o driver native_tty, que conversa
+ * com um TTY real do host. Crie o par de terminais antes de rodar:
+ *   socat -d -d pty,raw,echo=0,link=/tmp/ttyV0 pty,raw,echo=0,link=/tmp/ttyV1
+ * Build:
+ *   west build -p -b native_sim -- -DEXTRA_DTC_OVERLAY_FILE=native_tty.overlay
+ */
+
+&uart1 {
+	compatible = "zephyr,native-tty-uart";
+	current-speed = <115200>;
+	serial-port = "/tmp/ttyV0";
+	status = "okay";
+};
