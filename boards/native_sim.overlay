@@ -1,0 +1,19 @@
+/* O native_sim já define led0 (gpio0 pino 0); acrescenta led1 e led2. */
+/ {
+	aliases {
+		led1 = &led1;
+		led2 = &led2;
+	};
+};
+
+&leds {
+	led1: led_1 {
+		gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+		label = "LED 1";
+	};
+
+	led2: led_2 {
+		gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+		label = "LED 2";
+	};
+};

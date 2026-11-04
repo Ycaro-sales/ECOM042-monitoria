@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: Apache-2.0
+
+menu "Modulo de LED (led_ctrl)"
+
+config APP_LED_PERIOD_SLOW_MS
+	int "Periodo do padrao lento (ms, ciclo completo aceso+apagado)"
+	default 2000
+	range 2 60000
+
+config APP_LED_PERIOD_NORMAL_MS
+	int "Periodo do padrao normal (ms, ciclo completo aceso+apagado)"
+	default 1000
+	range 2 60000
+
+config APP_LED_PERIOD_FAST_MS
+	int "Periodo do padrao rapido (ms, ciclo completo aceso+apagado)"
+	default 250
+	range 2 60000
+
+config APP_LED_MAX_ALIASES
+	int "Quantos aliases ledN do devicetree procurar (led0 .. ledN-1)"
+	default 8
+	range 1 64
+	help
+	  O modulo usa todo alias led0, led1, ... que existir abaixo deste
+	  limite. LED novo exige apenas um alias novo no devicetree.
+
+endmenu
+
+source "Kconfig.zephyr"

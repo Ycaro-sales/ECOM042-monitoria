@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
+
+# Reusa as opções do app (APP_LED_*), que já incluem Kconfig.zephyr.
+rsource "../../Kconfig"

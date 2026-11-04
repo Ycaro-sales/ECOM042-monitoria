@@ -1,0 +1,34 @@
+/*
+ * Controlador GPIO emulado só dos testes. Com zephyr,deferred-init ele
+ * não é inicializado no boot: o primeiro teste vê led_ctrl_init()
+ * falhar e depois o inicializa com device_init().
+ */
+/ {
+	aliases {
+		led0 = &test_led0;
+		led1 = &test_led1;
+	};
+
+	test_gpio: gpio_emul_leds {
+		compatible = "zephyr,gpio-emul";
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+		zephyr,deferred-init;
+		status = "okay";
+	};
+
+	test_leds {
+		compatible = "gpio-leds";
+
+		test_led0: test_led_0 {
+			gpios = <&test_gpio 0 GPIO_ACTIVE_HIGH>;
+			label = "Test LED 0";
+		};
+
+		test_led1: test_led_1 {
+			gpios = <&test_gpio 1 GPIO_ACTIVE_HIGH>;
+			label = "Test LED 1";
+		};
+	};
+};
